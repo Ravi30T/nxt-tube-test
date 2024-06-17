@@ -41,6 +41,10 @@ class GamingVideos extends Component {
     this.getGamingVideos()
   }
 
+  onClickGamingVideosRetry = () => {
+    this.getGamingVideos()
+  }
+
   getGamingVideos = async () => {
     this.setState({gamingVideosApi: gamingApiStatusConstants.inProgress})
 
@@ -109,7 +113,7 @@ class GamingVideos extends Component {
                     ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
                     : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
                 }
-                alt="no saved videos"
+                alt="failure view"
                 className="no-search-results-img"
               />
               <GamingVideosFailureHeading isDarkMode={darkMode}>

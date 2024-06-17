@@ -1,7 +1,7 @@
 import NxtWatchContext from '../../context/NxtWatchContext'
 
 import NavBar from '../NavBar'
-import SideBar from '../SideBar'
+import InactiveSideBar from '../InactiveSideBar'
 
 import {
   NotFoundContainer,
@@ -18,7 +18,7 @@ const NotFound = () => (
         <>
           <NavBar />
           <div className="sidebar-notfound-container">
-            <SideBar />
+            <InactiveSideBar />
             <NotFoundContainer isDarkMode={darkMode} smDevice={smSideBar}>
               <img
                 src={
@@ -27,6 +27,7 @@ const NotFound = () => (
                     : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
                 }
                 className="not-found-img"
+                alt="not found"
               />
               <NotFoundHeading isDarkMode={darkMode}>
                 {' '}

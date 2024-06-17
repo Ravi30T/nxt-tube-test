@@ -22,6 +22,7 @@
 .loader-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 10px;
   height: 100vh;
 }
@@ -29,6 +30,7 @@
 .home-failure-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100vh;
 }

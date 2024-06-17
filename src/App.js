@@ -4,7 +4,7 @@ import './App.css'
 
 import {Component} from 'react'
 
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import NxtWatchContext from './context/NxtWatchContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
@@ -93,15 +93,19 @@ class App extends Component {
   }
 
   onAddSavedVideos = details => {
-    const {saveButton} = this.state
+    const {savedVideos} = this.state
 
-    if (saveButton === true) {
+    const findVideo = savedVideos.filter(each => each.id === details.id)
+
+    if (findVideo.length === 0) {
       this.setState(prevState => ({
         savedVideos: [...prevState.savedVideos, details],
       }))
     } else {
       this.setState(prevState => ({
-        savedVideos: [...prevState.filter(each => each.id !== details.id)],
+        savedVideos: [
+          ...prevState.savedVideos.filter(each => each.id !== details.id),
+        ],
       }))
     }
   }
@@ -117,6 +121,7 @@ class App extends Component {
       dislikeButton,
       savedVideos,
     } = this.state
+
     return (
       <NxtWatchContext.Provider
         value={{
@@ -140,7 +145,7 @@ class App extends Component {
           toggleSaveButton: this.onClickSave,
           toggleLikeButton: this.onClickLikeButton,
           toggleDislikeButton: this.onClickDislikeButton,
-          onAddSavedVideos: this.ononAddSavedVideos,
+          onAddSavedVideos: this.onAddSavedVideos,
         }}
       >
         <Switch>
@@ -154,7 +159,8 @@ class App extends Component {
             path="/videos/:id"
             component={VideoItemDetails}
           />
-          <Route component={NotFound} />
+          <Route path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
         </Switch>
       </NxtWatchContext.Provider>
     )

@@ -29,9 +29,11 @@ export const VideoPlayerContainer = styled.div`
   }
 `
 
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
   font-family: 'Roboto';
+  font-weight: bold;
   color: ${props => (props.isDarkMode ? '#ffffff' : '#000000')};
+  margin-bottom: 0px;
 
   @media (max-width: 767px) {
     font-size: 18px;
@@ -70,12 +72,12 @@ export const PublishedDate = styled.p`
 `
 const getLikeDislikeColor = props => {
   if (props.isActive) {
-    return '#3b82f6'
+    return '#2563eb'
   }
   if (props.isDarkMode) {
     return '#616e7c'
   }
-  return '#475569'
+  return '#64748b'
 }
 
 export const LikeButton = styled.button`
@@ -120,7 +122,7 @@ export const DislikeButton = styled.button`
 
 export const SaveButton = styled.button`
   font-family: 'Roboto';
-  color: ${props => (props.isDarkMode ? '#616e7c' : '#475569')};
+  color: ${props => (props.isDarkMode ? '#616e7c' : '#64748b')};
   outline: none;
   background: none;
   border: none;
@@ -138,9 +140,19 @@ export const SaveButton = styled.button`
   }
 `
 
+const getSavedButtonColor = props => {
+  if (props.isActive) {
+    return '#2563eb'
+  }
+  if (props.isDarkMode) {
+    return '#616e7c'
+  }
+  return '#64748b'
+}
+
 export const SavedButton = styled.button`
   font-family: 'Roboto';
-  color: ${props => (props.isDarkMode ? '#616e7c' : '#475569')};
+  color: ${props => getSavedButtonColor(props)};
   outline: none;
   background: none;
   border: none;

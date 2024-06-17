@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-export const GamingVideoTitle = styled.h1`
+export const GamingVideoTitle = styled.p`
+  font-weight: bold;
   font-family: 'Roboto';
   color: ${props => (props.isDarkMode ? '#ffffff' : '#000000')};
   font-size: 18px;

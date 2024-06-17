@@ -48,7 +48,7 @@ export const ListButton = styled.button`
 export const SidebarIcon = styled.p`
   margin-right: 25px;
   font-size: 25px;
-  color: ${props => (props.isdarkMode ? '#ffffff' : '#000000')};
+  color: ${props => (props.isdarkMode ? '#909090' : '#000000')};
 `
 
 export const TabName = styled.p`

@@ -98,14 +98,10 @@ class Login extends Component {
     return (
       <NxtWatchContext.Consumer>
         {value => {
-          const {darkMode, toggleDarkMode} = value
+          const {darkMode} = value
 
           return (
             <LoginBg isDarkMode={darkMode}>
-              <button type="button" onClick={toggleDarkMode}>
-                dark
-              </button>
-
               <LoginMain isDarkMode={darkMode} onSubmit={this.onClickLogin}>
                 <LoginLogoContainer>
                   <LoginImg
@@ -118,9 +114,13 @@ class Login extends Component {
                 </LoginLogoContainer>
 
                 <UserNameContainer>
-                  <LabelItem isDarkMode={darkMode}> USERNAME </LabelItem>
+                  <LabelItem htmlFor="username" isDarkMode={darkMode}>
+                    {' '}
+                    USERNAME{' '}
+                  </LabelItem>
                   <UsernameInput
                     type="input"
+                    id="username"
                     placeholder="Username"
                     isDarkMode={darkMode}
                     onChange={this.onEnterUsername}
@@ -129,10 +129,14 @@ class Login extends Component {
                 </UserNameContainer>
 
                 <PasswordContainer>
-                  <LabelItem isDarkMode={darkMode}> PASSWORD </LabelItem>
+                  <LabelItem htmlFor="password" isDarkMode={darkMode}>
+                    {' '}
+                    PASSWORD{' '}
+                  </LabelItem>
                   {showPassword ? (
                     <PasswordInput
                       type="text"
+                      id="password"
                       placeholder="Password"
                       isDarkMode={darkMode}
                       onChange={this.onEnterPassword}
@@ -152,9 +156,13 @@ class Login extends Component {
                 <ShowPasswordContainer>
                   <ShowPassword
                     type="checkbox"
+                    id="show-password"
                     onChange={this.onClickShowPassword}
                   />
-                  <ShowPasswordLabelItem isDarkMode={darkMode}>
+                  <ShowPasswordLabelItem
+                    htmlFor="show-password"
+                    isDarkMode={darkMode}
+                  >
                     Show Password
                   </ShowPasswordLabelItem>
                 </ShowPasswordContainer>

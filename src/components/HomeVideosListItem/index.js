@@ -41,13 +41,21 @@ const HomeVideosListItem = props => {
           <li className="video-list-item">
             <Link to={`/videos/${id}`} className="video-link-item">
               <div className="image-container">
-                <img src={thumbnailUrl} className="video-img" />
+                <img
+                  src={thumbnailUrl}
+                  className="video-img"
+                  alt="video thumbnail"
+                />
               </div>
 
               <div className="video-details-container">
                 <div className="profile-title-container">
                   <div className="profile-container">
-                    <img src={profileImgUrl} className="channel-profile-img" />
+                    <img
+                      src={profileImgUrl}
+                      className="channel-profile-img"
+                      alt="channel logo"
+                    />
                   </div>
 
                   <div className="video-title-container">

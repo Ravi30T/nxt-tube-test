@@ -44,7 +44,11 @@ class SideBar extends Component {
               isdarkMode={darkMode}
             >
               <ul className="tabs-container">
-                <ListItem isdarkMode={darkMode} isActive={activeTab === 'Home'}>
+                <ListItem
+                  data-testid="home"
+                  isdarkMode={darkMode}
+                  isActive={activeTab === 'Home'}
+                >
                   <Link to="/" className="link-item">
                     <ItemsContainer isdarkMode={darkMode}>
                       <ListButton
@@ -61,7 +65,7 @@ class SideBar extends Component {
                   </Link>
                 </ListItem>
 
-                <ListItem isdarkMode={darkMode}>
+                <ListItem data-testid="trending" isdarkMode={darkMode}>
                   <Link to="/trending" className="link-item">
                     <ItemsContainer isdarkMode={darkMode}>
                       <ListButton
@@ -79,7 +83,7 @@ class SideBar extends Component {
                   </Link>
                 </ListItem>
 
-                <ListItem isdarkMode={darkMode}>
+                <ListItem data-testid="gaming" isdarkMode={darkMode}>
                   <Link to="/gaming" className="link-item">
                     <ItemsContainer isdarkMode={darkMode}>
                       <ListButton
@@ -97,7 +101,7 @@ class SideBar extends Component {
                   </Link>
                 </ListItem>
 
-                <ListItem isdarkMode={darkMode}>
+                <ListItem data-testid="savedVideos" isdarkMode={darkMode}>
                   <Link to="/saved-videos" className="link-item">
                     <ItemsContainer isdarkMode={darkMode}>
                       <ListButton

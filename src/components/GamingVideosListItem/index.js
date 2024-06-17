@@ -21,7 +21,11 @@ const GamingVideosListItem = props => {
           <li className="gaming-video-list-item">
             <Link to={`/videos/${id}`} className="gaming-video-link-item">
               <div className="gaming-video-details-container">
-                <img src={thumbnailUrl} className="gaming-video-img" />
+                <img
+                  src={thumbnailUrl}
+                  className="gaming-video-img"
+                  alt="video thumbnail"
+                />
                 <GamingVideoTitle isDarkMode={darkMode}>
                   {' '}
                   {title}{' '}

@@ -41,10 +41,12 @@ const NavBar = props => (
         toggleDarkMode,
         toggleSideBar,
         onClickWebsiteLogo,
+        onClickHome,
       } = value
 
       const onClickLogout = () => {
         const {history} = props
+        onClickHome()
         Cookies.remove('jwt_token')
         history.replace('/login')
       }
@@ -60,6 +62,7 @@ const NavBar = props => (
                       ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
                       : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
                   }
+                  alt="website logo"
                   onClick={onClickWebsiteLogo}
                 />
               </Link>
@@ -67,7 +70,11 @@ const NavBar = props => (
 
             <NavButtonsContainer>
               <ThemeContainer>
-                <ThemeButton isDarkMode={darkMode} onClick={toggleDarkMode}>
+                <ThemeButton
+                  data-testid="theme"
+                  isDarkMode={darkMode}
+                  onClick={toggleDarkMode}
+                >
                   {darkMode ? <IoSunnyOutline /> : <FaMoon />}
                 </ThemeButton>
               </ThemeContainer>
@@ -137,7 +144,11 @@ const NavBar = props => (
 
             <LgNavButtonsContainer>
               <ThemeContainer>
-                <LgThemeButton isDarkMode={darkMode} onClick={toggleDarkMode}>
+                <LgThemeButton
+                  data-testid="theme"
+                  isDarkMode={darkMode}
+                  onClick={toggleDarkMode}
+                >
                   {darkMode ? <IoSunnyOutline /> : <FaMoon />}
                 </LgThemeButton>
               </ThemeContainer>

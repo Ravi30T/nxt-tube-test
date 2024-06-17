@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
   font-family: 'Roboto';
+  font-weight: bold;
   color: ${props => (props.isDarkMode ? '#ffffff' : '#000000')};
 
   @media (max-width: 767px) {
@@ -11,7 +12,8 @@ export const VideoTitle = styled.h1`
 
   @media (min-width: 576px) {
     margin-bottom: 0px;
-    font-size: 20px;
+    font-size: 18px;
+    margin-top: 0px;
   }
 `
 

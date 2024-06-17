@@ -22,7 +22,6 @@ import React from 'react'
 const NxtWatchContext = React.createContext({
   darkMode: false,
   smSideBar: false,
-  lgSideBar: true,
   showAd: true,
   toggleAd: () => {},
   toggleDarkMode: () => {},
@@ -31,7 +30,6 @@ const NxtWatchContext = React.createContext({
   onClickTrending: () => {},
   onClickGaming: () => {},
   onClickSavedVideos: () => {},
-  saveButton: false,
   savedVideos: [],
   onAddSavedVideos: () => {},
   toggleSaveButton: () => {},

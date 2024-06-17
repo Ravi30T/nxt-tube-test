@@ -141,7 +141,7 @@ class Home extends Component {
                   <div className="home-failure-container">
                     <img
                       src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
-                      alt="no saved videos"
+                      alt="no videos"
                       className="no-search-results-img"
                     />
                     <HomeFailureHeading isDarkMode={darkMode}>
@@ -173,7 +173,7 @@ class Home extends Component {
                     ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
                     : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
                 }
-                alt="no saved videos"
+                alt="failure view"
                 className="no-search-results-img"
               />
               <HomeFailureHeading isDarkMode={darkMode}>
@@ -217,11 +217,18 @@ class Home extends Component {
                 <SideBar />
                 <HomeContainer isDarkMode={darkMode} smDevice={smSideBar}>
                   {showAd && (
-                    <AdContainer>
-                      <AdCloseButton type="button" onClick={toggleAd}>
+                    <AdContainer data-testid="banner">
+                      <AdCloseButton
+                        data-testid="close"
+                        type="button"
+                        onClick={toggleAd}
+                      >
                         <IoIosClose />
                       </AdCloseButton>
-                      <AdWebsiteLogo src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
+                      <AdWebsiteLogo
+                        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                        alt="nxt watch logo"
+                      />
                       <AdMessage>
                         Buy Nxt Watch Premium prepaid plans with UPI
                       </AdMessage>
@@ -241,6 +248,7 @@ class Home extends Component {
                     <SearchIconContainer isDarkMode={darkMode}>
                       <button
                         type="button"
+                        data-testid="searchButton"
                         className="search-icon-button"
                         onClick={this.onClickSearchIcon}
                         aria-label="Search"

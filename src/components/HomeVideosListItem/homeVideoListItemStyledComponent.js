@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-export const VideoTitle = styled.h1`
+export const VideoTitle = styled.p`
+  font-weight: bold;
   font-family: 'Roboto';
   text-decoration: none;
   color: ${props => (props.isDarkMode ? '#ffffff' : '#181818')};

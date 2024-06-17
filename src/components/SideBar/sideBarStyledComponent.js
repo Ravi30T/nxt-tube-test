@@ -60,7 +60,7 @@ export const SidebarIcon = styled.p`
       return '#ff0000'
     }
 
-    return props.isdarkMode ? '#ffffff' : '#000000'
+    return props.isdarkMode ? '#909090' : '#000000'
   }};
 `
 
@@ -77,8 +77,9 @@ export const TabName = styled.p`
   }
 `
 
-export const ContactUs = styled.h1`
+export const ContactUs = styled.p`
   font-family: 'Roboto';
+  font-weight: bold;
   color: ${props => (props.isdarkMode ? '#ffffff' : '#000000')};
 
   @media (max-width: 767px) {

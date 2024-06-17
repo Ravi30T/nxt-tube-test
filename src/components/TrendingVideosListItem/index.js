@@ -38,12 +38,17 @@ const TrendingVideosListItem = props => {
         return (
           <li className="trending-video-list-item">
             <Link to={`/videos/${id}`} className="trending-video-link-item">
-              <img src={thumbnailUrl} className="trending-video-image" />
+              <img
+                src={thumbnailUrl}
+                className="trending-video-image"
+                alt="video thumbnail"
+              />
 
               <div className="xs-video-details-container">
                 <div className="channel-logo-container">
                   <img
                     src={profileImgUrl}
+                    alt="channel logo"
                     className="trending-video-channel-profile-img"
                   />
                 </div>

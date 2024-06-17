@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player'
 import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
 import {MdPlaylistAdd, MdPlaylistAddCheck} from 'react-icons/md'
 
-import {formatDistanceToNow} from 'date-fns'
+// import {formatDistanceToNow} from 'date-fns'
 
 import NavBar from '../NavBar'
 import InactiveSideBar from '../InactiveSideBar'
@@ -57,26 +57,18 @@ class VideoItemDetails extends Component {
   onClickLikeButton = () => {
     // this.setState(prevState => ({likeButton: !prevState.likeButton}))
 
-    this.setState(prevState => {
-      const updatedVideoData = {
-        ...prevState.videoData,
-        likeButton: !prevState.videoData.likeButton,
-        dislikeButton: prevState.likeButton ? prevState.dislikeButton : false,
-      }
-      return {videoData: updatedVideoData}
-    })
+    this.setState(prevState => ({
+      likeButton: !prevState.likeButton,
+      dislikeButton: prevState.likeButton ? prevState.dislikeButton : false,
+    }))
   }
 
   onClickDislikeButton = () => {
     // this.setState(prevState => ({dislikeButton: !prevState.dislikeButton}))
-    this.setState(prevState => {
-      const updatedVideoData = {
-        ...prevState.videoData,
-        dislikeButton: !prevState.videoData.dislikeButton,
-        likeButton: prevState.dislikeButton ? prevState.likeButton : false,
-      }
-      return {videoData: updatedVideoData}
-    })
+    this.setState(prevState => ({
+      dislikeButton: !prevState.dislikeButton,
+      likeButton: prevState.dislikeButton ? prevState.likeButton : false,
+    }))
   }
 
   onClickVideoDetailsRetry = () => {
@@ -119,9 +111,6 @@ class VideoItemDetails extends Component {
         thumbnailUrl: data.video_details.thumbnail_url,
         videoUrl: data.video_details.video_url,
         viewsCount: data.video_details.view_count,
-        videoSaved: false,
-        likeButton: false,
-        dislikeButton: false,
       }
 
       this.setState({
@@ -136,45 +125,38 @@ class VideoItemDetails extends Component {
   }
 
   render() {
-    const {videoData} = this.state
+    const {videoData, likeButton, dislikeButton} = this.state
 
     const {
+      id,
       title,
       channelName,
       profileImg,
       subscribersCount,
       description,
       publishedAt,
-      thumbnailUrl,
       videoUrl,
       viewsCount,
-      videoSaved,
-      likeButton,
-      dislikeButton,
     } = videoData
-
-    // const newDate = formatDistanceToNow(new Date(videoData.publishedAt))
-    // console.log(newDate)
 
     return (
       <NxtWatchContext.Consumer>
         {value => {
-          const {darkMode, smSideBar, onAddSavedVideos} = value
+          const {darkMode, smSideBar, savedVideos, onAddSavedVideos} = value
 
-          // const actualDate = publishedAt
-          // console.log(formatDistanceToNow(new Date(publishedAt)))
+          const findVideoSaved =
+            savedVideos.filter(each => each.id === id).length === 1
 
-          console.log(typeof publishedAt)
+          let videoSaved
+
+          if (findVideoSaved) {
+            videoSaved = true
+          } else {
+            videoSaved = false
+          }
 
           const onClickSave = () => {
-            this.setState(prevState => {
-              const updatedVideoData = {
-                ...prevState.videoData,
-                videoSaved: !prevState.videoData.videoSaved,
-              }
-              onAddSavedVideos(updatedVideoData)
-              return {videoData: updatedVideoData}
-            })
+            onAddSavedVideos(videoData)
           }
 
           const renderVideoDetailsInProgress = () => (
@@ -224,7 +206,11 @@ class VideoItemDetails extends Component {
                       <AiOutlineDislike /> Dislike
                     </DislikeButton>
                     {videoSaved ? (
-                      <SavedButton onClick={onClickSave} isDarkMode={darkMode}>
+                      <SavedButton
+                        onClick={onClickSave}
+                        isDarkMode={darkMode}
+                        isActive={videoSaved}
+                      >
                         <MdPlaylistAddCheck /> Saved
                       </SavedButton>
                     ) : (
@@ -239,7 +225,11 @@ class VideoItemDetails extends Component {
               <div className="channel-details-container">
                 <div className="logo-name-subscribers-container">
                   <div className="logo-container">
-                    <img src={profileImg} className="channel-logo" />
+                    <img
+                      src={profileImg}
+                      className="channel-logo"
+                      alt="channel logo"
+                    />
                   </div>
 
                   <div className="name-subscribers-lgdescription-container">
@@ -276,7 +266,7 @@ class VideoItemDetails extends Component {
                     ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
                     : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
                 }
-                alt="no saved videos"
+                alt="failure view"
                 className="no-search-results-img"
               />
               <VideoDetailsFailureHeading isDarkMode={darkMode}>
